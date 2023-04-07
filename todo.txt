@@ -1,0 +1,15 @@
+#main.py
+
+- odrediti di ce se spremati slika(bitno da znam kako dalje skripte napravit)
+	- moze user sam unosit
+	- moze se u folder gdje ce se skripta nalazit
+		- moze se skripta staviti u folder gdje se nalaze inace background
+	- problem je sto windows koristi \, a linux / za file path
+
+#ostalo
+
+- naci nacin kako triggerat skriptu
+	- network manager
+		-pri spajanju na internet
+	- cron
+		- svako odredeno vrijeme
