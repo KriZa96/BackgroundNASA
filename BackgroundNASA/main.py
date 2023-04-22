@@ -6,17 +6,12 @@ from datetime import timedelta
 from random import randint
 
 
-""" Rjesiti problem ako je danas video i skinuli smo neki fajl proslog datuma da ne skida ponovo neki random, 
- rjesit problem brisanja iz pic of the day prijasnjeg file-a"""
-
-
 def get_data(api_key, local_date):
     raw_response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={local_date}').text
     response = json.loads(raw_response)
     if is_image(response):
         return response
-    else:
-        raise ValueError
+    raise ValueError
 
 
 def get_title(response):
@@ -37,7 +32,7 @@ def get_hdurl(response):
 
 def download_image(url, date):
     raw_image = requests.get(url).content
-    with open(f'PicOfTheDay\\{date}.jpg', 'wb') as file:
+    with open(f'{date}.jpg', 'wb') as file:
         file.write(raw_image)
 
 
@@ -49,8 +44,8 @@ def is_leap_year(year):
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 
-def is_file_present(date, path='PicOfTheDay'):
-    return os.path.isfile(f'{path}\\{date}.jpg')
+def is_file_present(date):
+    return os.path.isfile(f'{date}.jpg')
 
 
 def new_date():
