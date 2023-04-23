@@ -1,13 +1,15 @@
 import requests
 import json
 import os
+import platform
+import ctypes
 from datetime import datetime
 from datetime import timedelta
 from random import randint
 
 
-def get_data(api_key, local_date):
-    raw_response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={local_date}').text
+def get_data(api_key, pic_date):
+    raw_response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={pic_date}').text
     response = json.loads(raw_response)
     if is_image(response):
         return response
@@ -73,6 +75,17 @@ def delete_previous_picture():
             os.remove(file)
 
 
+def set_wallpaper(pic_name):
+    system_name = platform.system().lower()
+    if system_name == 'linux':
+        path = os.getcwd() + f'/{pic_name}'
+        command = "gsettings set org.gnome.desktop.background picture-uri file:" + path
+        os.system(command)
+    elif system_name == 'windows':
+        path = os.getcwd() + f'\\{pic_name}'
+        ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 0)
+
+
 if __name__ == '__main__':
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -86,3 +99,5 @@ if __name__ == '__main__':
             continue
         download_image(picture_url, local_date)
     delete_previous_picture()
+    image_name = local_date + '.jpg'
+    set_wallpaper(image_name)
