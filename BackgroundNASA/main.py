@@ -83,13 +83,13 @@ def set_wallpaper(pic_name):
         os.system(command)
     elif system_name == 'windows':
         path = os.getcwd() + f'\\{pic_name}'
-        ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 0)
+        ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)
 
 
 if __name__ == '__main__':
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    # local_date = '2023-02-10'
+    # local_date = '1995-06-16'
     while not is_file_present(local_date):
         try:
             data = get_data(key, local_date)
