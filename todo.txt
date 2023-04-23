@@ -6,6 +6,8 @@
 		- moze se skripta staviti u folder gdje se nalaze inace background
 	- problem je sto windows koristi \, a linux / za file path
 
+- definirati kako opis unjeti sa slikom background -> moze preko tkinter windowa, moze uz pomoc PILLOW-a tako da zaljepimo tekst na sliku
+
 #ostalo
 
 - naci nacin kako triggerat skriptu
