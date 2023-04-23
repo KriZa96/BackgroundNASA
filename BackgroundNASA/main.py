@@ -67,10 +67,16 @@ def new_date():
     return f'{final_year}-{final_month}-{final_day}'
 
 
+def delete_previous_picture():
+    for file in os.listdir():
+        if file.endswith('.jpg') and not file.startswith(local_date):
+            os.remove(file)
+
+
 if __name__ == '__main__':
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    # local_date = '2023-02-18'
+    # local_date = '2023-02-10'
     while not is_file_present(local_date):
         try:
             data = get_data(key, local_date)
@@ -79,3 +85,4 @@ if __name__ == '__main__':
             local_date = new_date()
             continue
         download_image(picture_url, local_date)
+    delete_previous_picture()
