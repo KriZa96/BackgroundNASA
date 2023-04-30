@@ -1,5 +1,10 @@
 #main.py
 
+#kod za promjenu direktorija u onaj gdje se nalazi skripta, mozes isprobat sa test.py, pokrenes ga negdje
+#abspath = os.path.abspath(__file__)
+#dname = os.path.dirname(abspath)
+#os.chdir(dname)
+
 - odrediti di ce se spremati slika(bitno da znam kako dalje skripte napravit)
 	- moze user sam unosit
 	- moze se u folder gdje ce se skripta nalazit
@@ -15,3 +20,7 @@
 		-pri spajanju na internet
 	- cron
 		- svako odredeno vrijeme
+
+#linux
+- skuziti kako koristiti cron, komanda ispod. Komanda radi bez cron ali sa njim ne, fale vjv neka dopustenja
+cd /home/sting/repos/BackgroundNASA/BackgroundNASA && /usr/bin/env python3 /home/sting/repos/repos/BackgroundNASA/BackgroundNASA/main.py

@@ -83,7 +83,7 @@ def set_wallpaper(pic_name):
         for theme in themes:
             set_pic = f"gsettings set org.gnome.desktop.background picture-uri{theme} 'file:{path}'"
             os.system(set_pic)
-        scale_pic = "gsettings set.org.gnome.desktop.background picture-options 'scaled'"
+        scale_pic = "gsettings set org.gnome.desktop.background picture-options 'scaled'"
         os.system(scale_pic)
     elif system_name == 'windows':
         path = os.getcwd() + f'\\{pic_name}'
