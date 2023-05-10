@@ -78,7 +78,7 @@ def delete_previous_picture():
 def set_wallpaper(pic_name):
     system_name = platform.system().lower()
     if system_name == 'linux':
-        path = os.getcwd() + f'/{pic_name}'
+        path = os.path.dirname(os.path.abspath(__file__)) + f'/{pic_name}'
         themes = ['', '-dark']
         for theme in themes:
             set_pic = f"gsettings set org.gnome.desktop.background picture-uri{theme} 'file:{path}'"
@@ -86,7 +86,7 @@ def set_wallpaper(pic_name):
         scale_pic = "gsettings set org.gnome.desktop.background picture-options 'scaled'"
         os.system(scale_pic)
     elif system_name == 'windows':
-        path = os.getcwd() + f'\\{pic_name}'
+        path = os.path.dirname(os.path.abspath(__file__)) + f'\\{pic_name}'
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)
 
 
