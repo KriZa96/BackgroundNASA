@@ -16,15 +16,15 @@ def get_data(api_key, pic_date):
     raise ValueError
 
 
-def get_title(response):
+def get_title(response):  # Will be used later on.
     return response['title']
 
 
-def get_date(response):
+def get_date(response):  # Will be used later on.
     return response['date']
 
 
-def get_explaination(response):
+def get_explaination(response):  # Will be used later on.
     return response['explanation']
 
 
@@ -78,7 +78,7 @@ def delete_previous_picture():
 def set_wallpaper(pic_name):
     system_name = platform.system().lower()
     if system_name == 'linux':
-        path = os.path.dirname(os.path.abspath(__file__)) + f'/{pic_name}'
+        path = os.path.dirname(__file__) + f'/{pic_name}'
         themes = ['', '-dark']
         for theme in themes:
             set_pic = f"gsettings set org.gnome.desktop.background picture-uri{theme} 'file:{path}'"
@@ -86,14 +86,14 @@ def set_wallpaper(pic_name):
         scale_pic = "gsettings set org.gnome.desktop.background picture-options 'scaled'"
         os.system(scale_pic)
     elif system_name == 'windows':
-        path = os.path.dirname(os.path.abspath(__file__)) + f'\\{pic_name}'
+        path = os.path.dirname(__file__) + f'\\{pic_name}'
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)
 
 
 if __name__ == '__main__':
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    # local_date = '1995-06-16'
+    #  local_date = '1995-06-16'
     while not is_file_present(local_date):
         try:
             data = get_data(key, local_date)
