@@ -69,10 +69,10 @@ def new_date():
     return f'{final_year}-{final_month}-{final_day}'
 
 
-def delete_previous_picture():
+def delete_previous_picture(name):
     for file in os.listdir(os.path.dirname(__file__)):
-        if file.endswith('.jpg') and not file.startswith(local_date):
-            os.remove(file)
+        if file.endswith('.jpg') and not file.startswith(name):
+            os.remove(os.path.normpath(os.path.dirname(__file__))+f'/{file}')
 
 
 def set_wallpaper(pic_name):
@@ -101,6 +101,6 @@ if __name__ == '__main__':
             local_date = new_date()
             continue
         download_image(picture_url, local_date)
-    delete_previous_picture()
+    delete_previous_picture(local_date)
     image_name = local_date + '.jpg'
     set_wallpaper(image_name)
