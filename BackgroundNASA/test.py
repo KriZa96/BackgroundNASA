@@ -10,3 +10,7 @@ print(os.getcwd())
 print(abspath + "<-----")
 print(dname+ "<-----***")
 print(os.listdir())
+print(os.path.realpath(__file__))
+
+for file in os.listdir(os.path.dirname(__file__)):
+    print(file)
