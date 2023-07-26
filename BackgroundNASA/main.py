@@ -34,7 +34,7 @@ def get_hdurl(response):
 
 def download_image(url, date):
     raw_image = requests.get(url).content
-    with open(f'{date}.jpg', 'wb') as file:
+    with open(f'{os.path.normpath(os.path.dirname(__file__))}/{date}.jpg', 'wb') as file:
         file.write(raw_image)
 
 
@@ -47,7 +47,7 @@ def is_leap_year(year):
 
 
 def is_file_present(date):
-    return os.path.isfile(f'{date}.jpg')
+    return os.path.isfile(f'{os.path.normpath(os.path.dirname(__file__))}/{date}.jpg')
 
 
 def new_date():
@@ -70,7 +70,7 @@ def new_date():
 
 
 def delete_previous_picture():
-    for file in os.listdir():
+    for file in os.listdir(os.path.dirname(__file__)):
         if file.endswith('.jpg') and not file.startswith(local_date):
             os.remove(file)
 
