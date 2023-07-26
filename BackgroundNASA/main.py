@@ -34,7 +34,7 @@ def get_hdurl(response):
 
 def download_image(url, date):
     raw_image = requests.get(url).content
-    with open(f'{os.path.normpath(os.path.dirname(__file__))}/{date}.jpg', 'wb') as file:
+    with open(os.path.normpath(os.path.dirname(__file__) + f'/{date}.jpg'), 'wb') as file:
         file.write(raw_image)
 
 
@@ -46,8 +46,8 @@ def is_leap_year(year):
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 
-def is_file_present(date):
-    return os.path.isfile(f'{os.path.normpath(os.path.dirname(__file__))}/{date}.jpg')
+def is_file_present(name):
+    return os.path.isfile(os.path.normpath(os.path.dirname(__file__) + f'/{name}.jpg'))
 
 
 def new_date():
@@ -72,7 +72,7 @@ def new_date():
 def delete_previous_picture(name):
     for file in os.listdir(os.path.dirname(__file__)):
         if file.endswith('.jpg') and not file.startswith(name):
-            os.remove(os.path.normpath(os.path.dirname(__file__))+f'/{file}')
+            os.remove(os.path.normpath(os.path.dirname(__file__) + f'/{file}'))
 
 
 def set_wallpaper(pic_name):
@@ -92,7 +92,7 @@ def set_wallpaper(pic_name):
 if __name__ == '__main__':
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    #  local_date = '1995-06-16'
+    # local_date = '1995-06-16'
     while not is_file_present(local_date):
         try:
             data = get_data(key, local_date)
