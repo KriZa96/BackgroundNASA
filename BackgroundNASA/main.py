@@ -79,12 +79,8 @@ def set_wallpaper(pic_name):
     system_name = platform.system().lower()
     if system_name == 'linux':
         path = os.path.dirname(__file__) + f'/{pic_name}'
-        themes = ['', '-dark']
-        for theme in themes:
-            set_pic = f"gsettings set org.gnome.desktop.background picture-uri{theme} 'file:{path}'"
-            os.system(set_pic)
-        scale_pic = "gsettings set org.gnome.desktop.background picture-options 'scaled'"
-        os.system(scale_pic)
+        set_pic = f"nitrogen --set-auto --save {path}"
+        os.system(set_pic)
     elif system_name == 'windows':
         path = os.path.dirname(__file__) + f'\\{pic_name}'
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)

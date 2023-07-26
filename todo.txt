@@ -7,3 +7,10 @@
 #linux
 - skuziti kako koristiti cron, komanda ispod. Komanda radi bez cron ali sa njim ne, fale vjv neka dopustenja
 cd /home/sting/repos/BackgroundNASA/BackgroundNASA && /usr/bin/env python3 /home/sting/repos/repos/BackgroundNASA/BackgroundNASA/main.py
+
+- dodao u /etc/anacrontab
+@daily	10	nasaBackgroundChanger	python3 /home/sting/repos/BackgroundNASA/BackgroundNASA/main.py
+
+- check filepaths in python scripts
+    - idea get file absolute path and play with that
+
