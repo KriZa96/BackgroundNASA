@@ -122,7 +122,7 @@ def main():
             activate_script()
             sys.exit()
         time.sleep(5)
-
+    return
 
 if __name__ == '__main__':
     main()
