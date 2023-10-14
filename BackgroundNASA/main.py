@@ -3,6 +3,8 @@ import json
 import os
 import platform
 import ctypes
+import sys
+import time
 from datetime import datetime
 from datetime import timedelta
 from random import randint
@@ -85,7 +87,22 @@ def set_wallpaper(pic_name):
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)
 
 
-if __name__ == '__main__':
+def is_connected_to_internet():
+    system = platform.system().lower()
+
+    ping = {
+        'windows': 'ping -n 1',
+        'linux': 'ping -c 1'
+    }
+    host = 'google.com'
+
+    response = os.system(f'{ping[system]} {host}')
+    print(response)
+
+    return not response
+
+
+def activate_script():
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     # local_date = '1995-06-16'
@@ -100,3 +117,16 @@ if __name__ == '__main__':
     delete_previous_picture(local_date)
     image_name = local_date + '.jpg'
     set_wallpaper(image_name)
+
+
+def main():
+    start_time = time.time()
+    while time.time() - start_time < 180:
+        if is_connected_to_internet():
+            activate_script()
+            sys.exit()
+        time.sleep(5)
+
+
+if __name__ == '__main__':
+    main()
