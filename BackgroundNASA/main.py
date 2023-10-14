@@ -89,16 +89,12 @@ def set_wallpaper(pic_name):
 
 def is_connected_to_internet():
     system = platform.system().lower()
-
     ping = {
         'windows': 'ping -n 1',
         'linux': 'ping -c 1'
     }
     host = 'google.com'
-
     response = os.system(f'{ping[system]} {host}')
-    print(response)
-
     return not response
 
 
