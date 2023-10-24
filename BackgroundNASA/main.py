@@ -89,12 +89,15 @@ def set_wallpaper(pic_name):
 
 def is_connected_to_internet():
     system = platform.system().lower()
-    ping = {
-        'windows': 'ping -n 1',
-        'linux': 'ping -c 1'
-    }
+
     host = 'google.com'
-    response = os.system(f'{ping[system]} {host}')
+    ping = {
+        'windows': f'ping -n 1 {host}',
+        'linux': f'ping -c 1 {host}'
+    }
+
+    response = os.system(ping[system])
+
     return not response
 
 
@@ -122,7 +125,7 @@ def main():
             activate_script()
             sys.exit()
         time.sleep(5)
-    return
+
 
 if __name__ == '__main__':
     main()
