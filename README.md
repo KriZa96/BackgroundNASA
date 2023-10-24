@@ -9,7 +9,8 @@ chooses a random image from past.
 
 YOU NEED PYTHON INSTALLED
 
-Install script on windows:      
+Install script on windows:
+    Make sure you have background set to Fit
     Press -> Win+R            
     Type -> shell:startup         
     Press -> enter          
