@@ -87,21 +87,6 @@ def set_wallpaper(pic_name):
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 3)
 
 
-def is_connected_to_internet():
-    system = platform.system().lower()
-
-    ping = {
-        'windows': 'ping -n 1',
-        'linux': 'ping -c 1'
-    }
-    host = 'google.com'
-
-    response = os.system(f'{ping[system]} {host}')
-    print(response)
-
-    return not response
-
-
 def activate_script():
     key = 'DEMO_KEY'
     local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -117,15 +102,18 @@ def activate_script():
     delete_previous_picture(local_date)
     image_name = local_date + '.jpg'
     set_wallpaper(image_name)
+    return False
 
 
 def main():
     start_time = time.time()
-    while time.time() - start_time < 180:
-        if is_connected_to_internet():
-            activate_script()
-            sys.exit()
-        time.sleep(5)
+    script_not_activated = True
+    while time.time() - start_time < 180 and script_not_activated:
+        try:
+            script_not_activated = activate_script()
+        except:
+            time.sleep(5)
+    sys.exit()
 
 
 if __name__ == '__main__':
