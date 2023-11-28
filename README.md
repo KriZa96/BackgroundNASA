@@ -7,13 +7,14 @@ The program checks if new image is available and downloads it.
 If the image of the day is not of supported format, program
 chooses a random image from past.
 
-Make sure your access to the internet is not restricted, sript may not be able to properly download the image.
+Make sure your access to the Internet is not restricted, script may not be able to properly download the image.
 
 ## Dependencies
 YOU NEED PYTHON INSTALLED
 1. Python ## ## ## >
 1. Make sure you have requests module installed (pip install requests)
 
+## Instalation
 Install script on windows:                                
     Make sure you set background to Fit                              
     Press -> Win+R            
