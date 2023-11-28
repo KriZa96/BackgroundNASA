@@ -14,7 +14,7 @@ YOU NEED PYTHON INSTALLED
 1. Python ## ## ## >
 1. Make sure you have requests module installed (pip install requests)
 
-## Instalation
+## Installation
 Install script on windows:                                
     Make sure you set background to Fit                              
     Press -> Win+R            
