@@ -103,7 +103,8 @@ def is_connected_to_internet():
 
 def activate_script():
     key = 'DEMO_KEY'
-    local_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    date_yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    local_date = date_yesterday
     # local_date = '1995-06-16'
     while not is_file_present(local_date):
         try:
@@ -112,9 +113,9 @@ def activate_script():
         except (KeyError, ValueError):
             local_date = new_date()
             continue
-        download_image(picture_url, local_date)
-    delete_previous_picture(local_date)
-    image_name = local_date + '.jpg'
+        download_image(picture_url, date_yesterday)
+    delete_previous_picture(date_yesterday)
+    image_name = date_yesterday + '.jpg'
     set_wallpaper(image_name)
 
 
