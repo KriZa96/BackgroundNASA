@@ -1,6 +1,6 @@
 # NASA image of the day background changer
 
-Program that updates background each day to a picture from 
+App that updates background each day to a picture from 
 https://apod.nasa.gov/apod/archivepixFull.html 
 
 The program checks if new image is available and downloads it.
