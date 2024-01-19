@@ -124,8 +124,9 @@ def main():
     while time.time() - start_time < 180:
         if is_connected_to_internet():
             activate_script()
-            sys.exit()
+            break
         time.sleep(5)
+    sys.exit()
 
 
 if __name__ == '__main__':
