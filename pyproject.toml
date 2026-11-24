@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nasa-wallpaper"
+version = "2.0.0"
+description = "Set your desktop wallpaper to NASA's Astronomy Picture of the Day"
+readme = "README.md"
+license = "GPL-2.0-only"
+requires-python = ">=3.9"
+authors = [
+    { name = "KriZa96" },
+]
+keywords = ["nasa", "apod", "wallpaper", "astronomy", "desktop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Desktop Environment",
+]
+dependencies = [
+    "requests>=2.20",
+]
+
+[project.urls]
+Homepage = "https://github.com/KriZa96/BackgroundNASA"
+Repository = "https://github.com/KriZa96/BackgroundNASA"
+
+[project.scripts]
+nasa-wallpaper = "nasa_wallpaper.cli:entry_point"
+
+[tool.setuptools.packages.find]
+where = ["src"]
