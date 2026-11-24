@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nasa-wallpaper"
-version = "2.0.0"
+version = "2.0.1"
 description = "Set your desktop wallpaper to NASA's Astronomy Picture of the Day"
 readme = "README.md"
 license = "GPL-2.0-only"
